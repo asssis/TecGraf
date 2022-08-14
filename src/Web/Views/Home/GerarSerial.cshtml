@@ -1,0 +1,50 @@
+﻿@model Tecgraf.Model.SerialNumber
+
+@{
+    ViewData["Title"] = "Gerar Serial";
+}
+
+<h1>Gerar Serial</h1>
+ 
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GerarSerial">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AnoFabricacao" class="control-label"></label>
+                <input type="number" min="1900" max="2099" asp-for="AnoFabricacao" class="form-control" />
+                <span asp-validation-for="AnoFabricacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnoModelo" class="control-label"></label>
+                <input type="number" min="1900" max="2099" asp-for="AnoModelo" class="form-control" />
+                <span asp-validation-for="AnoModelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Pais</label>
+                <select class="form-control" asp-items="@ViewBag.Pais" name="SlgPais"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <select class="form-control" asp-items="@ViewBag.Tipo" name="Tipo"></select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Serial" class="control-label"></label>
+            <input type="text" readonly="readonly" asp-for="Serial" class="form-control" /> 
+        </div>
+    </div>
+</div>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

@@ -1,0 +1,28 @@
+﻿@model Tecgraf.Model.SerialNumber
+
+@{
+    ViewData["Title"] = "Verificar Serial";
+}
+
+<h1>Verificar Serial</h1>
+ 
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GerarSerial">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Serial" class="control-label"></label>
+                <input asp-for="Serial" class="form-control" />
+                <span asp-validation-for="Serial" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div> 
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
